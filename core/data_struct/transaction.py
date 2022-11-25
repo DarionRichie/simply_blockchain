@@ -15,8 +15,12 @@ class Tx(object):
     def __init__(self):
         pass
 
-    def GenTxInput(self):
-        # 利用from_address去拉数据
-        # tx内容可以序列化进去(简单json就可以)
-        # 累加>count就可以
-        pass
+    def Check(self):
+        assert self.from_address_ is not None, "self from_address is None"
+        assert self.from_address_sign_ is not None, "self from_address is None"
+
+    def DoTx(self):
+        self.Check()
+        self.tx_input_.Spented()
+        self.tx_ouput_.Save()
+        
